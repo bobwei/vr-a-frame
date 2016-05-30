@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class AppComponent extends React.Component {
+class MainComponent extends React.Component {
   render() {
     return (
       <div className="index">
@@ -11,7 +11,7 @@ class AppComponent extends React.Component {
   }
 }
 
-AppComponent.defaultProps = {
+MainComponent.defaultProps = {
 };
 
-export default AppComponent;
+export default MainComponent;
