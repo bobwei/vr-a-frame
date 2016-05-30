@@ -1,8 +1,7 @@
 {
   "name": "react-webpack-template",
   "version": "1.7.0",
-  "description": "A base skeleton template for react and webpack without task runners",
-  "main": "server.js",
+  "description": "A base skeleton template for react and webpack",
   "scripts": {
     "server": "env=dist node server/index.js --env=dist",
     "start": "env=dev inlineCSSInJS=true node server/index.js --env=dev",
@@ -17,10 +16,6 @@
     "release:minor": "npm version minor && npm publish && git push --follow-tags",
     "release:patch": "npm version patch && npm publish && git push --follow-tags"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://weblogixx@github.com/weblogixx/react-webpack-template.git"
-  },
   "keywords": [
     "React",
     "Webpack",
@@ -28,12 +23,7 @@
     "Boilerplate",
     "Demo"
   ],
-  "author": "Christian Schilling (cs@weblogixx.de)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/weblogixx/react-webpack-template/issues"
-  },
-  "homepage": "https://github.com/weblogixx/react-webpack-template#readme",
+  "author": "Bob Wei",
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-eslint": "^6.0.0",
@@ -79,8 +69,10 @@
     "dotenv": "^2.0.0",
     "ejs": "^2.4.2",
     "express": "^4.13.4",
+    "node-sass": "^3.7.0",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "react-dom": "^15.0.0",
+    "sass-loader": "^3.2.0"
   }
 }

@@ -3,5 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/Main';
 
-// Render the main component into the dom
+// require('normalize.css/normalize.css');
+require('./styles/App.scss');
+
 ReactDOM.render(<App />, document.getElementById('app'));
