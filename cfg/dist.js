@@ -2,7 +2,7 @@
 
 let path = require('path');
 let webpack = require('webpack');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 let baseConfig = require('./base');
 let defaultSettings = require('./defaults');
 
@@ -16,7 +16,10 @@ let config = Object.assign({}, baseConfig, {
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
+      'process.env': {
+        BROWSER: JSON.stringify(true),
+        NODE_ENV: '"production"'
+      }
     }),
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
@@ -24,7 +27,8 @@ let config = Object.assign({}, baseConfig, {
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin('[name].css')
   ],
   module: defaultSettings.getDefaultModules()
 });

@@ -9,6 +9,7 @@
 const path = require('path');
 const srcPath = path.join(__dirname, '/../src');
 const dfltPort = 8000;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
  * Get the default modules object for webpack
@@ -25,6 +26,10 @@ function getDefaultModules() {
     ],
     loaders: [
       {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
       },
@@ -32,10 +37,18 @@ function getDefaultModules() {
         test: /\.sass/,
         loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax'
       },
-      {
-        test: /\.scss/,
-        loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
-      },
+      (() => {
+        if (process.env.inlineCSSInJS) {
+          return {
+            test: /\.scss$/,
+            loader: 'style-loader!css-loader!sass-loader!postcss-loader?outputStyle=expanded'
+          };
+        }
+        return {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader!postcss-loader?outputStyle=expanded')
+        };
+      })(),
       {
         test: /\.less/,
         loader: 'style-loader!css-loader!less-loader'
@@ -48,10 +61,10 @@ function getDefaultModules() {
         test: /\.(png|jpg|gif|woff|woff2)$/,
         loader: 'url-loader?limit=8192'
       },
-      {
-        test: /\.(mp4|ogg|svg)$/,
-        loader: 'file-loader'
-      }
+      {test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
+      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'}
     ]
   };
 }
