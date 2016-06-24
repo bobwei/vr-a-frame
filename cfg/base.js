@@ -38,5 +38,10 @@ module.exports = {
       config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV
     }
   },
-  module: {}
+  module: {},
+  postcss: function () {
+    return [
+      require('autoprefixer')
+    ];
+  }
 };
