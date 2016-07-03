@@ -1,22 +1,16 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
-import MainComponent from '../components/MainComponent';
 
-
-class IndexPage extends React.Component {
-  render() {
-    return (
-      <div>
-        <MainComponent />
-      </div>
-    );
-  }
-}
+const IndexPage = () => (
+  <div className="index">
+    Hello World
+  </div>
+);
 
 IndexPage.defaultProps = {
 };
 
-export default connect((state) => {
-  return state;
-})(IndexPage);
+IndexPage.propTypes = {
+};
+
+export default connect()(IndexPage);

@@ -5,7 +5,7 @@ import App from '../containers/App';
 import IndexPage from '../containers/IndexPage';
 
 
-export default function(history) {
+export default function (history) {
   return (
     <Router history={history}>
       <Route path="/" component={App}>

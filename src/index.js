@@ -19,7 +19,7 @@ if (location.protocol === 'file:') {
   history = browserHistory;
 }
 const store = configureStore({});
-const routes = createRoutes(history)
+const routes = createRoutes(history);
 
 ReactDOM.render(
   <Provider store={store}>
