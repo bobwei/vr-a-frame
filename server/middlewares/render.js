@@ -9,8 +9,7 @@ import { Provider } from 'react-redux';
 import createRoutes from '../../src/routes/index';
 import configureStore from '../../src/stores/configureStore';
 
-
-export default function() {
+export default function () {
   const app = express();
   app.set('views', path.join(__dirname, '../views'));
   app.set('view engine', 'ejs');
@@ -21,7 +20,7 @@ export default function() {
 
     match({
       routes,
-      location: req.url
+      location: req.url,
     }, (error, redirectLocation, renderProps) => {
       if (error) {
         res.status(500).send(error.message);
@@ -34,7 +33,7 @@ export default function() {
           </Provider>
         );
         res.render('index', {
-          html
+          html,
         });
       } else {
         res.status(404).send('Not found');
