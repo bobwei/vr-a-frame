@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { browserHistory, hashHistory } from 'react-router';
+import 'aframe';
 
 import './styles/App.scss';
 import configureStore from './stores/configureStore';
