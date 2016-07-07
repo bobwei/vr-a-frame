@@ -28,3 +28,9 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app')
 );
+
+/* require all assets */
+const req = require.context('./3dmodels', true, /\.(png|jpg|gif|woff|woff2|dae|tga)$/);
+req.keys().forEach((key) => {
+  require(key);
+});
