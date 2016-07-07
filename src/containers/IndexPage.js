@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import jQuery from 'jquery';
 
-import theBluImg from '../images/theBlu.png';
-
 class IndexPage extends React.Component {
   constructor() {
     super();
@@ -13,7 +11,7 @@ class IndexPage extends React.Component {
         y: 0,
         z: 0,
       },
-      speed: 0.1,
+      speed: 0.3,
     };
   }
 
@@ -52,21 +50,20 @@ class IndexPage extends React.Component {
           color="#111820"
         />
         <a-image
-          src={theBluImg}
+          src={require('../images/theBlu.png')}
           width={4}
           height={4}
           position={'0 2 -6'}
-        />
-        <a-sphere
-          position={`${x} ${y} ${z}`}
-          radius="0.1"
-          color="#EF2D5E"
         />
         <a-plane
           rotation="-90 0 0"
           width="4"
           height="16"
           color="#7BC8A4"
+        />
+        <a-collada-model
+          src={require('../3dmodels/man/man.dae')}
+          position={`${x} ${y} ${z}`}
         />
       </a-scene>
     );
